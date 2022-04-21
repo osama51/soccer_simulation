@@ -64,6 +64,8 @@ class MainApp(QMainWindow, FORM_CLASS):
         print("Tao", elapsed_t2,'\n')
         self.goal_height = self.max_height - (0.5 * self.gravity * (elapsed_t2**2))
         
+        if self.goal_height < 0: self.goal_height = 0
+        
         self.labelMaxHeight.setText(str(round(self.max_height,2))+" m")
         self.labelGoalHeight.setText(str(round(self.goal_height,2))+" m")
         x = np.arange(0,np.pi,0.1)
@@ -72,20 +74,12 @@ class MainApp(QMainWindow, FORM_CLASS):
         t =  np.arange(0,(elapsed_t1+elapsed_t2),0.01)
         x = v0 * t * np.cos(theta)
         y = v0 * t * np.sin(theta) - (0.5 * self.gravity * t**2)
-        # i = 0
-        # for n in y:
-        #     i += 1
-        #     if n<0:
-        #         print("hela hopa")
-        #         velocity_x = v0 * np.cos(theta)
-        #         velocity_y = v0 * np.sin(theta) - self.gravity * t[i-1]
-        #         v00 = 0.5 * (velocity_x + velocity_y)
-        #         print("v0", v0, "v00", v00)
-        #         y[i-1:] = v00 * (t[i-1:]-(elapsed_t1+elapsed_t2)) * np.sin(theta) - (0.5 * self.gravity * (t[i-1:]-(elapsed_t1+elapsed_t2))**2)
-        #         print("y[i:]", y[i:])
-        #         break
+       
         
-        # if (y.any()<0): y = 0
+        for index, value in enumerate(y):
+            
+            if value < 0:
+                y[index] = 0
         
         
         # self.image = cv2.imread("images/grass.jpg")
