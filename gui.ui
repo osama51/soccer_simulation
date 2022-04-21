@@ -60,7 +60,7 @@
          <normaloff>images/icons/icon - Copy.png</normaloff>images/icons/icon - Copy.png</iconset>
        </attribute>
        <attribute name="title">
-        <string>Height</string>
+        <string>Foul</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="3" column="0">
@@ -238,10 +238,10 @@
       <widget class="QWidget" name="tab_2">
        <attribute name="icon">
         <iconset>
-         <normaloff>images/icons/pngwing.com.png</normaloff>images/icons/pngwing.com.png</iconset>
+         <normaloff>images/icons/fire_ball.png</normaloff>images/icons/fire_ball.png</iconset>
        </attribute>
        <attribute name="title">
-        <string>Speed</string>
+        <string>Ace</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
@@ -264,6 +264,12 @@
              <layout class="QGridLayout" name="gridLayout_9" columnstretch="100,0">
               <item row="0" column="0" colspan="2">
                <widget class="QLabel" name="labelProbability">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>50</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="text">
                  <string>0.0</string>
                 </property>
@@ -360,7 +366,7 @@
          <widget class="QWidget" name="widget_2" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-            <horstretch>35</horstretch>
+            <horstretch>30</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
@@ -377,13 +383,16 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>images/vertical.jpg</pixmap>
+              <pixmap>images/vertical_tennis.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
              </property>
             </widget>
            </item>

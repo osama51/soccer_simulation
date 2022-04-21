@@ -1,5 +1,6 @@
 import os
 import sys
+import cv2
 import time
 import math
 import threading
@@ -18,7 +19,6 @@ from PyQt5.uic import loadUiType
 
 
 
-
 FORM_CLASS,_ = loadUiType(path.join(path.dirname(__file__), "gui.ui"))
 class MainApp(QMainWindow, FORM_CLASS):
     def __init__(self , parent=None):
@@ -30,10 +30,12 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.gravity = 9.8 
         self.dotted_pen = pg.mkPen(color=(31, 204, 54), width=3, style=Qt.DashLine)
         self.yellow_pen = pg.mkPen(color=(227, 224, 32), width=1)
+        # self.graphicsView.setBackgroundBrush(QBrush(QImage("images/yard1.jpg")))
         
         self.title = "Sports Simulation"
         self.setWindowTitle(self.title)
         # self.setWindowIcon(QIcon("images/icons/wizard.png"))
+        
         
         self.doubleSpinBox_theta.valueChanged.connect(self.ball_elevations)
         self.doubleSpinBox_v.valueChanged.connect(self.ball_elevations)
@@ -62,16 +64,39 @@ class MainApp(QMainWindow, FORM_CLASS):
         print("Tao", elapsed_t2,'\n')
         self.goal_height = self.max_height - (0.5 * self.gravity * (elapsed_t2**2))
         
-        self.labelMaxHeight.setText(str(round(self.max_height,2)))
-        self.labelGoalHeight.setText(str(round(self.goal_height,2)))
+        self.labelMaxHeight.setText(str(round(self.max_height,2))+" m")
+        self.labelGoalHeight.setText(str(round(self.goal_height,2))+" m")
         x = np.arange(0,np.pi,0.1)
         
         
         t =  np.arange(0,(elapsed_t1+elapsed_t2),0.01)
         x = v0 * t * np.cos(theta)
         y = v0 * t * np.sin(theta) - (0.5 * self.gravity * t**2)
+        # i = 0
+        # for n in y:
+        #     i += 1
+        #     if n<0:
+        #         print("hela hopa")
+        #         velocity_x = v0 * np.cos(theta)
+        #         velocity_y = v0 * np.sin(theta) - self.gravity * t[i-1]
+        #         v00 = 0.5 * (velocity_x + velocity_y)
+        #         print("v0", v0, "v00", v00)
+        #         y[i-1:] = v00 * (t[i-1:]-(elapsed_t1+elapsed_t2)) * np.sin(theta) - (0.5 * self.gravity * (t[i-1:]-(elapsed_t1+elapsed_t2))**2)
+        #         print("y[i:]", y[i:])
+        #         break
+        
         # if (y.any()<0): y = 0
+        
+        
+        # self.image = cv2.imread("images/grass.jpg")
+        # self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
+        # img = pg.ImageItem( image=self.image )
+        # plott = pg.PlotItem.addItem.plot(x, y, pen= self.dotted_pen)
+        
+        
         self.graphicsView.clear()
+        # self.graphicsView.setBackgroundBrush(QBrush(QImage("images/grass.jpg")))
+        # self.graphicsView.setCacheMode(QGraphicsView.CacheBackground)
         self.graphicsView.plot(x, y, pen= self.dotted_pen)
         
     def score_probability(self):
@@ -80,21 +105,19 @@ class MainApp(QMainWindow, FORM_CLASS):
         std = self.doubleSpinBox_std.value()
         speed = self.doubleSpinBox_spd.value()
         
-        x = np.linspace(mu - 3*std, mu + 3*std, 100)
-        
-        self.graphicsView_normal.plot(x, norm.pdf(x, mu, std), pen=self.yellow_pen)
+        x = np.linspace(mu - 3*std, mu + 3*std, int(6*std))
+        sub = speed - (mu-(3*std))
+        if sub<0: sub = 0
+        self.graphicsView_normal.clear()
+        self.graphicsView_normal.plot(x, norm.pdf(x, mu, std), pen=self.yellow_pen, brush=(50,50,200,60))
+        self.graphicsView_normal.plot(x[:int(sub)], norm.pdf(x, mu, std)[:int(sub)], pen=self.yellow_pen, fillLevel=0.0, brush=(50,200,100,100))
         cdf = norm.cdf(speed, loc=mu, scale=std)
         
-        self.labelProbability.setText(str(round(cdf,2)))
+        self.labelProbability.setText(str(int(round(cdf,2)*100))+" %")
         
-        
-        
-        
-        
-        
-        
-        
-        
+             
+            
+
         
 def main():
     app = QApplication(sys.argv)
