@@ -1,6 +1,6 @@
 # Sports Simulation 
 
-## Contributers 
+## Contributors 
 Name | Sec | BN 
 ------|----|------
 Ahmed Wael | 1 | 9
