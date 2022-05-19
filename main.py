@@ -145,7 +145,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.graphicsView_normal.clear()
         self.graphicsView_normal.plot(x, norm.pdf(x, mu, std), pen=self.yellow_pen, brush=(50,50,200,60))
         self.graphicsView_normal.plot(x[:int(sub)], norm.pdf(x, mu, std)[:int(sub)], pen=self.yellow_pen, fillLevel=0.0, brush=(50,200,100,100))
-        cdf = norm.cdf(speed, loc=mu, scale=std)
+        cdf = norm.cdf(speed, loc=mu, scale=std) 
         
         self.labelProbability.setText(str(int(round(cdf,2)*100))+" %")
         
@@ -157,6 +157,8 @@ class MainApp(QMainWindow, FORM_CLASS):
             are taken to lie within three standard deviations of the mean, and thus 
             it is empirically useful to treat 99.7% probability as near certainty.
         """
+        """ line 148: prebuilt fun from SciPy that calculates 
+            Cumulative distribution function (probability @speed) """
         
         
         
