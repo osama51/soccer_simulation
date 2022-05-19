@@ -1,18 +1,6 @@
 # Sports Simulation 
 
-## Contributers 
-Name | Sec | BN 
-------|----|------
-Ahmed Wael | 1 | 9
-Doaa Salah | 1 | 29
-Mohamed Osama | 2 | 12
-Mohamed Abdel Galeel | 2 | 16
-
-____________________
-<br>
-
-
-## Abstract
+## Description
 A python based application that simulates two scenarios from two different kinds of sports, soccer fouls and tennis aces. Having each sport in a different tab, we implemented dynamic graphs to visually demonstrate the simulations in both conditions.
 ____________________
 <br>
@@ -68,3 +56,16 @@ def score_probability(self):
     
         cdf = norm.cdf(speed, loc=mu, scale=std)
 ```
+
+____________________
+<br>
+
+## Contributors 
+Name | Github 
+------|----------
+Ahmed Wael | Ahmedwael-afk
+Doaa Salah |  
+Mohamed Osama | osama51
+Mohamed Abdel Galeel | 
+
+
