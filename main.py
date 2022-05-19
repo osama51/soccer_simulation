@@ -55,8 +55,8 @@ class MainApp(QMainWindow, FORM_CLASS):
         theta: the kick angle
         v0: The initial velocity
         distance_s: distance from start to goal plane 
-        elapsed_t1: The horizontal distance between the kicking point and the goal plane
-        elapsed_t2: The horizontal distance between the goal plane and the maximum elevation point
+        elapsed_t1: Time during the horizontal distance between the kicking point and the goal plane
+        elapsed_t2: Time during the horizontal distance between the goal plane and the maximum elevation point
         t: range of total time (0 : total time) with a step of 0.01
         """
         
