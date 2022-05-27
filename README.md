@@ -8,7 +8,7 @@ ____________________
 ## Controls
 <br>
 
-### Foul
+### Free Kick
 The foul simulation is controlled using three parameters; *`distance from the goal`*, the *`firing angle`* and the *`firing velocity`*, through which we get the *`maximum height`* of the ball and the *`height at the goal plane`*. It's important to note the we neglected drag forces and assumed the the shooting spots are as much as possible perpendicular to the goal line.
 > Samples `1` 
 
@@ -37,7 +37,7 @@ the opponent), knowing that it increases with an increasing ball hitting *`speed
 
 ## Tools 
 * Python 
-* Qt designer
+* PyQt
 
 <br><br>
 
