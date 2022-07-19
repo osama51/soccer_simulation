@@ -1,6 +1,5 @@
 # Sports Simulation 
 
-## Description
 A python based application that simulates two scenarios from two different kinds of sports, soccer fouls and tennis aces. Having each sport in a different tab, we implemented dynamic graphs to visually demonstrate the simulations in both conditions.
 ____________________
 <br>
